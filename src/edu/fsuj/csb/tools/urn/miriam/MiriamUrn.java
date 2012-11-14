@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import java.util.zip.DataFormatException;
 
 import edu.fsuj.csb.tools.urn.URN;
+import edu.fsuj.csb.tools.xml.CachedXMLReader;
 import edu.fsuj.csb.tools.xml.NoTokenException;
 import edu.fsuj.csb.tools.xml.Tools;
 import edu.fsuj.csb.tools.xml.XMLReader;
@@ -69,7 +70,7 @@ public class MiriamUrn extends URN {
 		XMLReader xmlr;
 		XmlToken token;
     try {
-	    xmlr = new XMLReader(url);
+	    xmlr = new CachedXMLReader(url);
 	    token = xmlr.readToken();
 			if (token.instanceOf("uris")) {
 				urls=urlsOf(token);

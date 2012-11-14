@@ -8,14 +8,14 @@ import java.util.zip.DataFormatException;
  * @author Stephan Richter
  *
  */
-public class KeggDrugUrn extends KeggUrn {
+public class KeggEDrugUrn extends KeggUrn {
 
 	/**
 	 * create a new urn instance
 	 * @param code the kegg drug code
 	 * @throws DataFormatException
 	 */
-	public KeggDrugUrn(String code) throws DataFormatException {
-	  super("kegg.drug",code);	  
+	public KeggEDrugUrn(String code) throws DataFormatException {
+	  super("kegg.edrug",code);	  
   }
 }
