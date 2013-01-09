@@ -59,13 +59,13 @@ public class MiriamUrn extends URN {
 		urls=Tools.URLSet();
   	if (nid().equals("file")) return null;
   	String urn = get();
-  	if (urn.contains("knapsack")){
+/*  	if (urn.contains("knapsack")){
   		int i=urn.lastIndexOf(':');
   		URL url = new URL("http://kanaya.naist.jp/knapsack_jsp/information.jsp?sname=C_ID&word="+urn.substring(i+1));
   		urls.add(url);
   		Tools.warnOnce("MiriamUrn.urls() overriding Miriam Registry Resolve script for "+urn+"!!!\nResult: "+urls);
 			return urls;
-  	}
+  	}*/
 		URL url=new URL("http://www.ebi.ac.uk/miriamws/main/rest/resolve/"+urn);
 		XMLReader xmlr;
 		XmlToken token;
