@@ -41,7 +41,12 @@ public class MiriamUrn extends URN {
 	 * @throws DataFormatException
 	 */
 	public MiriamUrn(String urnString) throws DataFormatException {
-		super(urnString);
+		super(convert(urnString));
+  }
+
+	private static String convert(String urnString) {
+		if (urnString.startsWith("http://identifiers.org"))return urnString.replace("http://identifiers.org", "urn:miriam").replace('/', ':').trim();
+	  return urnString;
   }
 
 	/**
@@ -103,5 +108,9 @@ public class MiriamUrn extends URN {
 			} else System.err.println("found "+token.tokenClass()+" token!");
 		}
 		return result;
+  }
+	
+	public static void main(String[] args) throws DataFormatException {
+	  System.out.println(new MiriamUrn("http://identifiers.org/biomodels.db/BIOMD0000000091"));
   }
 }
