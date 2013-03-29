@@ -1,7 +1,5 @@
 package edu.fsuj.csb.tools.urn.miriam;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.zip.DataFormatException;
 
 
@@ -10,7 +8,7 @@ import java.util.zip.DataFormatException;
  * @author Stephan Richter
  *
  */
-public class KeggPathwayUrn extends MiriamUrn {
+public class KeggPathwayUrn extends KeggUrn {
 
 	/**
 	 * creates a new urn instance
@@ -20,13 +18,4 @@ public class KeggPathwayUrn extends MiriamUrn {
 	public KeggPathwayUrn(String code) throws DataFormatException {
 		super("kegg.pathway",code);		
   }
-	
-	/**
-	 * @return the special kegg pathway url
-	 * @throws MalformedURLException
-	 */
-	public URL url() throws MalformedURLException {
-	  return new URL("http://www.genome.ad.jp/dbget-bin/www_bget?pathway+"+code());
-	}
-
 }
