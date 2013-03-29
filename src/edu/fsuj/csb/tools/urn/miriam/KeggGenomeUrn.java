@@ -30,6 +30,14 @@ public class KeggGenomeUrn extends MiriamUrn {
 	public URL url() throws MalformedURLException{		
 		return new URL("http://www.genome.jp/kegg-bin/show_organism?menu_type=pathway_maps&org=" + code());
 	}
+	
+	/**
+	 * @return the special kegg organism api data page url
+	 * @throws MalformedURLException
+	 */
+	public URL apiUrl() throws MalformedURLException{		
+		return new URL("http://rest.kegg.jp/list/pathway/" + code());
+	}
 
 	/**
 	 * @return the set of code lines of the kegg organism data page
@@ -39,4 +47,8 @@ public class KeggGenomeUrn extends MiriamUrn {
 	public String[] fetchLines() throws MalformedURLException, IOException {
 		return PageFetcher.fetchLines(url());
   }
+
+	public String[] getFromApi() throws MalformedURLException, IOException {
+		return PageFetcher.fetchLines(apiUrl());
+	}
 }
