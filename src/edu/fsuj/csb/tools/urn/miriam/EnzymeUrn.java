@@ -1,7 +1,5 @@
 package edu.fsuj.csb.tools.urn.miriam;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.zip.DataFormatException;
 
 
@@ -10,7 +8,7 @@ import java.util.zip.DataFormatException;
  * @author Stephan Richter
  *
  */
-public class EnzymeUrn extends MiriamUrn {
+public class EnzymeUrn extends KeggUrn {
 
 	/**
 	 * create a new urn instance
@@ -20,12 +18,4 @@ public class EnzymeUrn extends MiriamUrn {
 	public EnzymeUrn(String ecCode) throws DataFormatException {
 	  super("ec-code",ecCode);
   }
-	
-	/**
-	 * @return the kegg url of the given enzyme
-	 * @throws MalformedURLException
-	 */
-	public URL keggUrl() throws MalformedURLException{ // this method is kept, as it allows direct url acces without searching through the urls() set
-		return new URL("http://www.genome.jp/dbget-bin/www_bget?"+code()); 
-	}
 }
