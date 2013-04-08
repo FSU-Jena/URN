@@ -64,6 +64,7 @@ public abstract class KeggUrn extends MiriamUrn {
 	public TreeSet<URL> urls() throws MalformedURLException {
 		Tools.startMethod("KeggUrn.urls()");
 		TreeSet<URL> result = super.urls();
+		result.add(apiUrl());
 		result.add(url());
 		Tools.endMethod(result);
 		return result;

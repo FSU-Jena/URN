@@ -104,7 +104,7 @@ public class MiriamUrn extends URN {
 				if (token.getValue("type").equals("URL")){
 					if (result==null) result=Tools.URLSet();
 					result.add(new URL(Tools.removeHtml(token.content()).replace("www_bget?cpd:", "www_bget?").replace("www_bget?gl:", "www_bget?")));
-				} else System.err.println("found uri token, whit type ≠ URL!");
+				} else System.err.println("found uri token, with type ≠ URL!");
 			} else System.err.println("found "+token.tokenClass()+" token!");
 		}
 		return result;
