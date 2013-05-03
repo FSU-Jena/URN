@@ -3,7 +3,6 @@ package edu.fsuj.csb.tools.urn.miriam;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.zip.DataFormatException;
 
@@ -98,14 +97,13 @@ public class MiriamUrn extends URN {
 	 */
 	private TreeSet<URL> urlsOf(XmlToken token) throws MalformedURLException {
 	  TreeSet<URL> result=null;		
-		for (Iterator<XmlToken> it = token.subtokenIterator();it.hasNext();){
-			token=it.next();
-			if (token.instanceOf("uri")){
-				if (token.getValue("type").equals("URL")){
+		for (XmlToken subtoken: token.subtokens()){
+			if (subtoken.instanceOf("uri")){
+				if (subtoken.getValue("type").equals("URL")){
 					if (result==null) result=Tools.URLSet();
-					result.add(new URL(Tools.removeHtml(token.content()).replace("www_bget?cpd:", "www_bget?").replace("www_bget?gl:", "www_bget?")));
+					result.add(new URL(Tools.removeHtml(subtoken.content()).replace("www_bget?cpd:", "www_bget?").replace("www_bget?gl:", "www_bget?")));
 				} else System.err.println("found uri token, with type ≠ URL!");
-			} else System.err.println("found "+token.tokenClass()+" token!");
+			} else System.err.println("found "+subtoken.tokenClass()+" token!");
 		}
 		return result;
   }
