@@ -102,7 +102,7 @@ public class MiriamUrn extends URN {
 				if (subtoken.getValue("type").equals("URL")){
 					if (result==null) result=Tools.URLSet();
 					String dummy=Tools.removeHtml(subtoken.content());
-					result.add(dummy);
+					result.add(new URL(dummy));
 					
 					/* the following code adds the url to the rest page */
 					if (dummy.contains("http://www.genome.jp/dbget-bin/www_bget")){
