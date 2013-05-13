@@ -101,7 +101,19 @@ public class MiriamUrn extends URN {
 			if (subtoken.instanceOf("uri")){
 				if (subtoken.getValue("type").equals("URL")){
 					if (result==null) result=Tools.URLSet();
-					result.add(new URL(Tools.removeHtml(subtoken.content()).replace("www_bget?cpd:", "www_bget?").replace("www_bget?gl:", "www_bget?")));
+					String dummy=Tools.removeHtml(subtoken.content());
+					result.add(dummy);
+					
+					/* the following code adds the url to the rest page */
+					if (dummy.contains("http://www.genome.jp/dbget-bin/www_bget")){
+						dummy=dummy.replace("http://www.genome.jp/dbget-bin/www_bget", "");
+						int pos=dummy.indexOf(':');
+						if (pos>-1) dummy=dummy.substring(pos+1);
+						dummy="http://rest.kegg.jp/get/"+dummy;
+					}
+					result.add(new URL(dummy));
+					/*  end rest */
+					
 				} else System.err.println("found uri token, with type ≠ URL!");
 			} else System.err.println("found "+subtoken.tokenClass()+" token!");
 		}
