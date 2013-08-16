@@ -78,7 +78,7 @@ public abstract class KeggUrn extends MiriamUrn {
 	public String fetch() throws MalformedURLException, IOException {
 		Tools.startMethod("KeggUrn.fetch()");
 		String result = PageFetcher.fetch(apiUrl()).toString();
-		Tools.endMethod();
+		Tools.endMethod(result);
 		return result;
 	}
 }

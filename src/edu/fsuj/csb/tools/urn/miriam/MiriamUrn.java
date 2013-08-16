@@ -122,5 +122,7 @@ public class MiriamUrn extends URN {
 	
 	public static void main(String[] args) throws DataFormatException {
 	  System.out.println(new MiriamUrn("http://identifiers.org/biomodels.db/BIOMD0000000091"));
+	  String test="urn:miriam:kegg.compound:C04046_MGDG";
+	  System.out.println(test.substring(0,31));
   }
 }
